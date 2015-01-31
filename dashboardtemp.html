@@ -1,0 +1,295 @@
+<!doctype html>
+      
+      <html>
+      <head>
+          	<script src="js/jquery.js" type="text/javascript"></script>
+            <script src="js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+            <script src="js/jquery.validate.js" type="text/javascript"></script>
+            <script src="js/jquery.reveal.js"></script>
+            <script src="js/encoder.js"></script>
+            <script src="js/mqttws31.js"></script>
+            <script src="js/app.js"></script>
+            <script src="js/moment.min.js"></script>
+			<script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/1.3.1/lodash.min.js"></script>
+            <script src="js/jquery.minicolors.min.js"></script>
+            <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+            <script>
+      function initialize() {
+        var map_canvas = document.getElementById('map_canvas');
+        var map_options = {
+          center: new google.maps.LatLng(18.467886, 73.835589),
+          zoom: 13,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var map = new google.maps.Map(map_canvas, map_options)
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+    <script>
+	$(document).ready(function() {
+		$('.pure-paginator> li > a').click(function(event){
+		event.preventDefault();//stop browser to take action for clicked anchor
+ 
+		//get displaying tab content jQuery selector
+		var active_tab_selector = $('.pure-paginator > li.active > a').attr('href');					
+ 
+		//find actived navigation and remove 'active' css
+		var actived_nav = $('.pure-paginator > li.active');
+		actived_nav.removeClass('active');
+ 
+		//add 'active' css into clicked navigation
+		$(this).parents('li').addClass('active');
+ 
+		//hide displaying tab content
+		$(active_tab_selector).removeClass('active');
+		$(active_tab_selector).addClass('hide');
+ 
+		//show target tab content
+		var target_tab_selector = $(this).attr('href');
+		$(target_tab_selector).removeClass('hide');
+		$(target_tab_selector).addClass('active');
+	     });
+	  });
+	</script>
+
+          	<meta charset="UTF-8">
+            <title>My Dashboard-M2M Dashboard</title>
+            <link rel="stylesheet" type="text/css" href="css/styles.css" media="screen">
+            <link rel="stylesheet" href="css/reveal.css" type="text/css" media="screen">
+            <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.3.0/buttons-min.css">
+            <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.4.1/menus-min.css">
+            <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.4.1/forms-min.css">
+            <link rel="stylesheet" href="css/jquery.minicolors.css">
+            <link href='http://fonts.googleapis.com/css?family=Lato:900,400,700' rel='stylesheet' type='text/css'>
+          </head>
+          
+          <body class="notconnected">
+              <div id="wrapper">
+                  <div id="nav">
+                       <div id="mainnav">
+                            <ul>
+                              <li><a href="index.html"><img src="images/m2mlogo.png" style="vertical-align:middle; height:54px;"></a></li>
+                              <li style="vertical-align:middle; height:54px;"><a href="platform.html">PLATFORM</a></li>
+                              <li style="vertical-align:middle; height:54px;"><a href="services.html">SERVICES</a></li>
+                              <li style="vertical-align:middle; height:54px;"><a href="devcenter.html">DEVELOPER CENTER</a></li>
+                              <li style="vertical-align:middle; height:54px;"><a href="support.html">SUPPORT</a></li>
+                          </ul>
+                      </div>
+                  </div>
+              
+              	<div id="content-wrapper1">
+                 
+                  <div id="login-border">
+
+                    <div id="login-wel">
+                        <h1>Welcome!!!<hr></h1>
+                        <h2>Account Information</h2>
+                    </div>
+                        <div id="logout">
+                          <a href="logout.php">Logout</a>
+                        </div>
+
+                    <div class="datagrid"><table>
+                      
+                        <tbody><tr><td style="text-align:center;vertical-align:middle;"><b>HiveMQ server address:</b></td><td style="text-align:center;vertical-align:middle;">m2mhive.dynns.com</td></tr>
+                          <tr class="alt"><td style="text-align:center;vertical-align:middle;"><b>Port:</b></td><td style="text-align:center;vertical-align:middle;">1883</td></tr>
+                          <tr><td style="text-align:center;vertical-align:middle;"><b>Websockets Port:</b></td><td style="text-align:center;vertical-align:middle;">1884</td></tr>
+                          <tr class="alt"><td style="text-align:center;vertical-align:middle;"><b>Domain ID:</b></td><td style="text-align:center;vertical-align:middle;"><?php echo "$userdomain" ?></td></tr>
+                          <tr><td style="text-align:center;vertical-align:middle;"><b>Connected Devices</b>:</td><td style="text-align:center;vertical-align:middle;"><?php echo "$serialnumber_count" ?></td></tr>
+                          <tr class="alt"><td style="text-align:center;vertical-align:middle;"><b>Email:</b></td><td style="text-align:center;vertical-align:middle;"><?php echo "$useremail" ?></td></tr>
+                          </tbody>
+                          </table></div>
+
+                            <div id="acc-image">
+                              <img src="images/settings.png" >
+                            </div>
+
+                            <div id="asterick">
+                              <p><b>*Please use your domain ID & serial number as authentication parameters while connecting your device.</b></p>
+                             </div> 
+                             
+                             <div id="map_canvas">
+                             </div>
+                             
+                             <div id="mqtt">
+                             	<h2>MQTT Client</h2>
+                             </div>
+                             
+                             <div id="connectionStatus"></div>
+                             
+                             <div id="connection">
+                             <ul class="pure-paginator" style="width:150%;">
+                                <li class="active"><a class="pure-button" href="#connection-box">Connect</a></li>
+                                <li><a class="pure-button" href="#publish-box">Publish</a></li>
+                                <li><a class="pure-button" id="subButton" href="#subscribe-box">Subscribe</a></li>
+                                <li><a class="pure-button" href="#messages-box">Messages</a></li>
+                             </ul>
+                             <div id="box-wrap">
+                             	<div id="connection-box" class="tab-content active">
+                                	<form class="pure-form">
+                                    	<div class="fieldBlock">
+                                        <label id="host">Host</label>
+                                        <input id="urlInput" type="text" value="m2mhive.dynns.com">
+                                        </div>
+                                        <div class="fieldBlock">
+                                        <label id="port">Port</label>
+                                        <input id="portInput" type="text" value="1884"/>
+                                        </div>
+                                         <div class="fieldBlock" style="margin-left:-5%; margin-top:1%;">
+                                        <label id="ssl" for="sslInput">SSL
+                                        <input id="sslInput" type="checkbox"/></label>
+                                        </div>
+                                        <div class="clear">
+                                        <div class="fieldBlock">
+                                        <label id="clientId">ClientID</label>
+                                        <input id="clientIdInput" type="text"/>
+                                        </div>
+                                        <div class="fieldBlock">
+                                        <label id="keepAlive">Keep Alive</label>
+                                        <input id="keepAliveInput" type="text" value="60"/>
+                                        </div>
+                                        <div class="fieldBlock" style="margin-left:-5%; margin-top:1%;">
+                                        <label id="cleanSession" for="cleanSessionInput">Clean Session
+                                        <input id="cleanSessionInput" type="checkbox" checked="checked"
+                                        disabled="disabled"/></label>
+                                        </div>
+                                        </div>
+                                        <div class="clear">
+                                        <div class="fieldBlock">
+                                        <label id="username">Username</label>
+                                        <input id="userInput" type="text"/>
+                                        </div>
+                                        <div class="fieldBlock">
+                                        <label id="password">Password</label>
+                                        <input id="pwInput" type="password"/>
+                                        </div>
+                                        </div>
+                                        <div class="clear">
+                                        <div class="fieldBlock">
+                                        <label id="lastwilltopic">Last-Will Topic</label>
+                                        <input id="lwTopicInput" type="text"/>
+                                        </div>
+                                        <div class="fieldBlock">
+                                        <label id="qos">Last-Will QoS</label>
+                                        <select id="lwQosInput">
+                                            <option>0</option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                        </select>
+                                        </div>
+                                        <div class="fieldBlock" style="margin-left:-5%; margin-top:1%;">
+                                        <label >Last-Will Retain</label>
+                                        <input class="checky" id="LWRInput" type="checkbox"/>
+                                        </div>
+                                        </div>
+                                        <div class="clear">
+                                        <div class="fieldBlock">
+                                        <label>Last-Will Messsage</label>
+                                        <textarea id="LWMInput"></textarea>
+                                        </div>
+                                        <div class="fieldBlock" style="margin-left:1%; margin-top:3%;">
+                                        <a class="connect-button" id="connectButton" onClick="websocketclient.connect();">Connect</a>
+                                        <a class="disconnect-button" id="disconnectButton" onClick="websocketclient.disconnect();" onClick="return false">Disconnect</a>
+                                        </div>
+                                        </div>
+                                    </form>
+                               </div>
+                               <div id="publish-box" class="tab-content hide">
+                               	<form class="pure-form">
+                                	<div class="fieldBlock">
+                                    <label>Topic</label>
+                                    <input id="publishTopic" type="text"/>
+                                    </div>
+                                    <div class="fieldBlock">
+                                    <label for="publishQoSInput" id="publishqos">QoS</label>
+                                    <select id="publishQoSInput">
+                                    <option>0</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    </select>
+                                    </div>
+                                    <div class="fieldBlock" style="margin-left:-5%; margin-top:1%;">
+                                    <label>Retain</label>
+                                    <input id="publishRetain" type="checkbox">
+                                    </div>
+                                    <div class="clear">
+                                    <div class="fieldBlock">
+                                    <label>Message</label>
+                                    <textarea id="publishPayload"></textarea>
+                                    </div>
+                                    <div class="fieldBlock" style="margin-left:1%; margin-top:3%;">
+                                    <a class="publish-button" id="publishButton" onClick="websocketclient.publish($('#publishTopic').val(),$('#publishPayload').val(),parseInt($('#publishQoSInput').val(),10),$('#publishRetain').is(':checked'))">Publish</a>
+                                    </div>
+                                    </div>
+                                </form>
+                              </div>
+                              <div id="subscribe-box" class="tab-content hide">
+                               	<form class="pure-form">
+                                	<div class="fieldBlock">
+                                	<label>Topic</label>
+                                    <input id="subscribeTopic" type="text">
+                                    </div>
+                                    <div class="fieldBlock">
+                                    <label for="QoSInput" id="qosinput">QoS</label>
+                                    <select id="QoSInput">
+                                      <option>0</option>
+                                      <option>1</option>
+                                      <option>2</option>
+                                    </select>
+                                    </div>
+                                    <div class="clear">
+                                    <div class="fieldBlock">
+                                    <label>Color</label>
+                                    <input class="color" id="colorChooser" type="hidden">
+                                    </div>
+                                    <div class="fieldBlock" style="margin-top:2%; margin-left:2%;">
+                                    <a class="publish-button" id="subscribeButton" onClick="websocketclient.subscribe($('#subscribeTopic').val(),parseInt($('#QoSInput').val()),$('#colorChooser').val().substring(1))">Subscribe</a>
+                                    </div>
+                                    </div>
+                                    <div style="clear:both;">
+                                    <div style="height:100px; overflow:auto; position:absolute; margin-top:1%; padding-top:70px; width:300px;">
+                                    <ul id="innerEdit" class="disc">
+                                    </ul>
+                                    </div>
+                                    </div>
+                               </form>
+                                	
+                                </div>
+                             <div id="messages-box" class="tab-content hide">
+                             	<div style=" width:400px; height:200px; overflow:auto; padding-top:80px; margin-top:0.25%;">
+                                	<ul id="messEdit" class="disc">
+                                    </ul>
+                                </div>
+                             </div>
+                             </div>
+                             <form method="post" action="getcoordinates.php">
+                             <label>Test</label>
+                             <input type="text" name="location" id="location">
+                             <input type="submit" value="submit">
+                             </form>
+                  		</div>
+                  </div>
+                
+              	</div>
+              
+              	<div id="footer-dashboard">
+					<p style="color:grey; text-align:center; margin-top:20px;">&copy;Copyright 2013 | All Rights Reserved | About Us | <a href="support.html">Contact</a> | Privacy | Terms Of Use | <a href="support.html">Feedback</a></p>              
+              	</div>
+              </div>
+                <script>
+					function randomString(length) {
+						var text = "";
+						var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+						for (var i = 0; i < length; i++)
+							text += possible.charAt(Math.floor(Math.random() * possible.length));
+						return text;
+					}
+					$(document).ready(function () {
+						$("#colorChooser").minicolors();
+						var rndColor = websocketclient.getRandomColor();
+						$("#colorChooser").minicolors('value', rndColor);
+					});
+				</script>   
+             
+</body>
+</html>

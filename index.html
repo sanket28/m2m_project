@@ -1,0 +1,112 @@
+      <!doctype html>
+      
+      <html>
+      
+          <head>
+          	<script src="js/jquery.js" type="text/javascript"></script>
+            <script src="js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+            <script src="js/jquery.validate.js" type="text/javascript"></script>
+            <script src="js/jquery.reveal.js"></script>
+          	<meta charset="UTF-8">
+            <title>M2M Dashboard</title>
+            <link rel="stylesheet" type="text/css" href="css/styles.css" media="screen">
+            <link rel="stylesheet" href="css/reveal.css" type="text/css" media="screen">
+            <link href='http://fonts.googleapis.com/css?family=Lato:900,400,700' rel='stylesheet' type='text/css'>
+          </head>
+          
+          <body>
+             
+              <div id="wrapper">
+                  <div id="nav">
+                       <div id="mainnav">
+                            <ul>
+                              <li><a href="index.html"><img src="images/m2mlogo.png" style="vertical-align:middle; height:54px;"></a></li>
+                              <li style="vertical-align:middle; height:54px;"><a href="platform.html">PLATFORM</a></li>
+                              <li style="vertical-align:middle; height:54px;"><a href="services.html">SERVICES</a></li>
+                              <li style="vertical-align:middle; height:54px;"><a href="devcenter.html">DEVELOPER CENTER</a></li>
+                              <li style="vertical-align:middle; height:54px;"><a href="support.html">SUPPORT</a></li>
+                              <li style="vertical-align:middle; height:54px;"><a data-reveal-id="loginModal" id="login" href="#" style="background-image: radial-gradient(at 50% 50%, rgb(14, 119, 95) 0%, rgb(26, 176, 142) 100%)">LOGIN</a>
+                              	<div id="loginModal" class="reveal-modal">
+                                	<h2 style="margin:6px auto; width:250px"><strong>Login:</strong></h2>
+                                	<form method="post" action="login.php" name="loginform" id="loginform">
+                                    	 <ol>
+                                            <li>
+                                                <label for="loginemail">Email</label>
+                                                <input type="email" name="loginemail">
+                                            </li>
+                                            <li>
+                                                <label for="logindomainid">Domain ID</label>
+                                                <input type="password" name="logindomainid">
+                                            </li>
+                                            <li>
+                                            	<input class="submit" type="image" value="" src="images/login.png" style="height:50px; width:110px; margin-left:-4px">
+                                    		</li>
+                                         </ol>
+                                    </form>
+                              		<a class="close-reveal-modal">&#215;</a>
+                         		</div>
+                              </li>
+                          </ul>
+                      </div>
+                  </div>
+              
+                  <div id="content-wrapper">
+                      <div id="banner" style="position:relative; left:0; top:0;" >
+                          <!--img src="images/homepagemainimage.png" style="position:relative; left:0; top:0; width:100%; opacity:0.8;"-->
+                          
+                          <p style="margin-right:150px; padding-top:80px">  Introducing a Machine-to-Machine platform</p> <br />
+                          <p style="margin-right:170px; margin-top:60px;"> Get connected with the M2M Dashboard! </p>
+                       
+                          <a href="getstarted.html"><img src="images/getstarted.png" style="position:absolute; top:350px; left:150px;" ></a>
+                      </div>
+                      
+                      <div id="leftbox">
+						<iframe width="400" height="220" src="//www.youtube.com/embed/sfEbMV295Kk?rel=0" frameborder="0" allowfullscreen></iframe>                    
+                      </div>  
+                       
+                      <div id="rightbox">
+                          <h1>Become a part of the M2M Cloud</h1>
+                          <p>Deploy your application in seconds!! Getting connected is extremely easy.</p>
+                          <p>Emergency, healthcare, transportation, logistics and fleet management, home automation and many more. The M2M Dashboard is a solution for all these applications.</p>
+                          <p>Let us create a smarter world with M2M technologies</p>
+                      </div>
+                      
+                      <div id="leftbox2"> 
+                          <h1>The Internet Of Things</h1>                                                 
+                          <p>The rise of objects that connect themselves to the internet -- from cars to heart monitors to stoplights -- is unleashing a wave of new possibilities for data gathering, predictive analytics, and IT automation. <br /> We provide a platform to tap these solutions.</p>
+                      </div>
+                      
+                      <div id="rightbox2">    
+                          <img src="images/IOT_obj1.png" style="width:500px; height:400px;">
+                      </div>
+                  </div>
+              
+                  <div id="footer">
+                      <p style="color:grey; text-align:center; margin-top:20px;">&copy;Copyright 2013 | All Rights Reserved | About Us | <a href="support.html">Contact</a> | Privacy | Terms Of Use | <a href="support.html">Feedback</a></p>
+                  </div>
+              </div>
+              <script>
+			 	$(document).ready(function() {
+					$('#loginform').validate({
+						rules: {
+							loginemail: {
+								required: true
+								},
+							logindomainid: {
+								required: true
+								}
+						},
+						messages: {
+							loginemail: {
+								required: "Please enter your Email address"
+								},
+							logindomainid: {
+								required: "Please enter your Domain ID"
+								}
+						}
+					});
+				});
+			</script>
+          </body>
+      
+      </html>

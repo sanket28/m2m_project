@@ -1,0 +1,118 @@
+<!doctype html>
+      
+      <html>
+      
+          <head>
+          	<script src="js/jquery.js" type="text/javascript"></script>
+            <script src="js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+            <script src="js/jquery.validate.js" type="text/javascript"></script>
+            <script src="js/jquery.reveal.js"></script>
+          	<meta charset="UTF-8">
+            <title>Services-M2M Dashboard</title>
+            <link rel="stylesheet" type="text/css" href="css/styles.css" media="screen">
+            <link rel="stylesheet" href="css/reveal.css" type="text/css" media="screen">
+            <link href='http://fonts.googleapis.com/css?family=Lato:900,400,700' rel='stylesheet' type='text/css'>
+          </head>
+          
+          <body>
+              <div id="wrapper">
+                  <div id="nav">
+                       <div id="mainnav">
+                            <ul>
+                              <li><a href="index.html"><img src="images/m2mlogo.png" style="vertical-align:middle; height:54px;"></a></li>
+                              <li style="vertical-align:middle; height:54px;"><a href="platform.html">PLATFORM</a></li>
+                              <li style="vertical-align:middle; height:54px;"><a href="services.html">SERVICES</a></li>
+                              <li style="vertical-align:middle; height:54px;"><a href="devcenter.html">DEVELOPER CENTER</a></li>
+                              <li style="vertical-align:middle; height:54px;"><a href="support.html">SUPPORT</a></li>
+                              <li style="vertical-align:middle; height:54px;"><a data-reveal-id="loginModal" id="login" href="#" style="background-image: radial-gradient(at 50% 50%, rgb(14, 119, 95) 0%, rgb(26, 176, 142) 100%)">LOGIN</a>
+                              	<div id="loginModal" class="reveal-modal">
+                                	<h2 style="margin:6px auto; width:250px"><strong>Login:</strong></h2>
+                                	<form method="post" action="login.php" name="loginform" id="loginform">
+                                    	 <ol>
+                                            <li>
+                                                <label for="loginemail">Email</label>
+                                                <input type="email" name="loginemail">
+                                            </li>
+                                            <li>
+                                                <label for="logindomainid">Domain ID</label>
+                                                <input type="password" name="logindomainid">
+                                            </li>
+                                            <li>
+                                            	<input class="submit" type="image" value="" src="images/login.png" style="height:50px; width:110px; margin-left:-4px">
+                                    		</li>
+                                         </ol>
+                                    </form>
+                              		<a class="close-reveal-modal">&#215;</a>
+                         		</div>
+                              </li>
+                          </ul>
+                      </div>
+                  </div>
+              
+              	<div id="content-wrapper">
+                   <div id="centerimage-services">
+                  <img src="images/services.png" style="display:block; margin-left:auto; margin-right:auto;" >
+                    </div>  
+
+                    <div id="rightbox-services">
+                 <h1>"Whatever you need, we get it done!!"</h1>
+              </div>
+              
+              <div id="lefttext">
+              <h2>M2M Services</h2>
+              </div>
+                 <div id="platforminfo-services">       
+                  <p>Currently we provide a limited number of services. But, we are happy to hear from you regarding your M2M requirements. Our engineers here at M2M Dashboard will help you tackle challenges and provide an effecient solution for your application. Contact us and we will get back to you within 2-3 business days.</p>
+                 </div>
+
+                 <div id="image2-services">
+                   <a href="support.html"><img src="images/contactus.png"  alt="contactus"></a>
+                   </div>
+                
+                 <div id="rightbox1-services">
+                 <h2>What services do we provide?</h2>
+                 </div>
+                  
+                 <div id="points">
+                <ul>
+                <li><p>Home Automation</p></li>
+                <li><p>Healthcare</p></li>
+                <li><p>Smart Metering
+(remote meter reading within the energy market)</p> </li>
+                 <li> <p>Vending
+(remote maintenance/control/telemetry of vending machines)</p></li>
+                  <li><p> Track & Trace
+(logistics and fleet management, traffic telematic, container tracking)</p></li>
+                   </ul>
+                   </div>   
+              	</div>
+              
+              	<div id="footer">
+					<p style="color:grey; text-align:center; margin-top:20px;">&copy;Copyright 2013 | All Rights Reserved | About Us | <a href="support.html">Contact</a> | Privacy | Terms Of Use | <a href="support.html">Feedback</a></p>              
+              	</div>
+              </div>
+              <script>
+			 	$(document).ready(function() {
+					$('#loginform').validate({
+						rules: {
+							loginemail: {
+								required: true
+								},
+							logindomainid: {
+								required: true
+								}
+						},
+						messages: {
+							loginemail: {
+								required: "Please enter your Email address"
+								},
+							logindomainid: {
+								required: "Please enter your Domain ID"
+								}
+						}
+					});
+				});
+			</script>
+          </body>
+      
+      </html>

@@ -1,0 +1,110 @@
+<!doctype html>
+      
+      <html>
+      
+          <head>
+          	<script src="js/jquery.js" type="text/javascript"></script>
+            <script src="js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+            <script src="js/jquery.validate.js" type="text/javascript"></script>
+            <script src="js/jquery.reveal.js"></script>
+          	<meta charset="UTF-8">
+            <title>Developer Center-M2M Dashboard</title>
+            <link rel="stylesheet" type="text/css" href="css/styles.css" media="screen">
+            <link rel="stylesheet" href="css/reveal.css" type="text/css" media="screen">
+            <link href='http://fonts.googleapis.com/css?family=Lato:900,400,700' rel='stylesheet' type='text/css'>
+          </head>
+          
+          <body>
+              <div id="wrapper">
+                  <div id="nav">
+                       <div id="mainnav">
+                            <ul>
+                              <li><a href="index.html"><img src="images/m2mlogo.png" style="vertical-align:middle; height:54px;"></a></li>
+                              <li style="vertical-align:middle; height:54px;"><a href="platform.html">PLATFORM</a></li>
+                              <li style="vertical-align:middle; height:54px;"><a href="services.html">SERVICES</a></li>
+                              <li style="vertical-align:middle; height:54px;"><a href="devcenter.html">DEVELOPER CENTER</a></li>
+                              <li style="vertical-align:middle; height:54px;"><a href="support.html">SUPPORT</a></li>
+                              <li style="vertical-align:middle; height:54px;"><a data-reveal-id="loginModal" id="login" href="#" style="background-image: radial-gradient(at 50% 50%, rgb(14, 119, 95) 0%, rgb(26, 176, 142) 100%)">LOGIN</a>
+                              	<div id="loginModal" class="reveal-modal">
+                                	<h2 style="margin:6px auto; width:250px"><strong>Login:</strong></h2>
+                                	<form method="post" action="login.php" name="loginform" id="loginform">
+                                    	 <ol>
+                                            <li>
+                                                <label for="loginemail">Email</label>
+                                                <input type="email" name="loginemail">
+                                            </li>
+                                            <li>
+                                                <label for="logindomainid">Domain ID</label>
+                                                <input type="password" name="logindomainid">
+                                            </li>
+                                            <li>
+                                            	<input class="submit" type="image" value="" src="images/login.png" style="height:50px; width:110px; margin-left:-4px">
+                                    		</li>
+                                         </ol>
+                                    </form>
+                              		<a class="close-reveal-modal">&#215;</a>
+                         		</div>
+                              </li>
+                          </ul>
+                      </div>
+                  </div>
+              
+              	<div id="content-wrapper">
+                	<div id="devcenter-library-leftbox">
+                    	<h2>MQTT Libraries</h2>
+                        <p>Choose from a variety of open source MQTT libraries. All the libraries are extremely easy to use and come with a very comprehensive API documentation. Connecting your device just got easier!!</p>
+                        <p>For more information about MQTT libraries click <a href="http://mqtt.org/wiki/doku.php/libraries" target="_blank">here</a></p>
+                        <p>If you think we've missed a library or you want to contribute your own, please <a href="support.html">let us know!</a></p>  
+                    </div>
+                    <div id="devcenter-gotolib-button">
+                    	<a href="libraries.html"><img src="images/gotolib.png"></a>
+                    </div>
+                    <div id="devcenter-rightbox-logo">
+                    	<img src="images/mqttlogo.jpg">
+                    </div>
+                    <div id="devcenter-centertext-info">
+                    	<h2>Hardware Support and Tutorials</h2>
+                        <p>M2M Dashboard supports a large number of devices. You can build your network with the device of your choice. Our in-depth tutorials will get you connected in no time!!</p>
+                        <p><b>Click on the logos below to see the respective tutorials</b></p>
+                    </div>
+                    <div id="devcenter-logos">
+                    	<img src="images/720px-Arduino_Logo.svg.png" style="width:7%; height:7%; margin-left:35%; margin-top:5%; margin-right:1%;">
+                        <img src="images/mbed.jpg" style="width:7%; height:7%; margin-right:1%;">
+                        <img src="images/RaspberryPi_Logo.png" style="width:6%; height:6%; margin-right:1%;">
+                        <img src="images/android.jpg" style="width:7%; height:7%;"> <br />
+                        <img src="images/ios.jpg" style="width:8%; height:8%; margin-left:38%; margin-top:2%; margin-right:1%;">
+                        <img src="images/Windows_logo_-_2012.png" style="width:7%; height:7%; margin-right:1%;">
+                        <img src="images/mac-logo.jpg" style="width:6%; height:6%;">
+                        
+                    </div>
+              	</div>
+              
+              	<div id="footer">
+              		<p style="color:grey; text-align:center; margin-top:20px;">&copy;Copyright 2013 | All Rights Reserved | About Us | <a href="support.html">Contact</a> | Privacy | Terms Of Use | <a href="support.html">Feedback</a></p>
+              	</div>
+              </div>
+              <script>
+			 	$(document).ready(function() {
+					$('#loginform').validate({
+						rules: {
+							loginemail: {
+								required: true
+								},
+							logindomainid: {
+								required: true
+								}
+						},
+						messages: {
+							loginemail: {
+								required: "Please enter your Email address"
+								},
+							logindomainid: {
+								required: "Please enter your Domain ID"
+								}
+						}
+					});
+				});
+			</script>
+          </body>
+      
+      </html>

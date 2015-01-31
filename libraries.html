@@ -1,0 +1,145 @@
+  <!doctype html>
+      
+      <html>
+      
+          <head>
+          	<script src="js/jquery.js" type="text/javascript"></script>
+            <script src="js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+            <script src="js/jquery.validate.js" type="text/javascript"></script>
+            <script src="js/jquery.reveal.js"></script>
+          	<meta charset="UTF-8">
+            <title>Libraries-M2M Dashboard</title>
+            <link rel="stylesheet" type="text/css" href="css/styles.css" media="screen">
+            <link rel="stylesheet" href="css/reveal.css" type="text/css" media="screen">
+            <link href='http://fonts.googleapis.com/css?family=Lato:900,400,700' rel='stylesheet' type='text/css'>
+          </head>
+          
+          <body>
+             
+              <div id="wrapper">
+                  <div id="nav">
+                       <div id="mainnav">
+                            <ul>
+                              <li><a href="index.html"><img src="images/m2mlogo.png" style="vertical-align:middle; height:54px;"></a></li>
+                              <li style="vertical-align:middle; height:54px;"><a href="platform.html">PLATFORM</a></li>
+                              <li style="vertical-align:middle; height:54px;"><a href="services.html">SERVICES</a></li>
+                              <li style="vertical-align:middle; height:54px;"><a href="devcenter.html">DEVELOPER CENTER</a></li>
+                              <li style="vertical-align:middle; height:54px;"><a href="support.html">SUPPORT</a></li>
+                              <li style="vertical-align:middle; height:54px;"><a data-reveal-id="loginModal" id="login" href="#" style="background-image: radial-gradient(at 50% 50%, rgb(14, 119, 95) 0%, rgb(26, 176, 142) 100%)">LOGIN</a>
+                              	<div id="loginModal" class="reveal-modal">
+                                	<h2 style="margin:6px auto; width:250px"><strong>Login:</strong></h2>
+                                	<form method="post" action="login.php" name="loginform" id="loginform">
+                                    	 <ol>
+                                            <li>
+                                                <label for="loginemail">Email</label>
+                                                <input type="email" name="loginemail">
+                                            </li>
+                                            <li>
+                                                <label for="logindomainid">Domain ID</label>
+                                                <input type="password" name="logindomainid">
+                                            </li>
+                                            <li>
+                                            	<input class="submit" type="image" value="" src="images/login.png" style="height:50px; width:110px; margin-left:-4px">
+                                    		</li>
+                                         </ol>
+                                    </form>
+                              		<a class="close-reveal-modal">&#215;</a>
+                         		</div>
+                              </li>
+                          </ul>
+                      </div>
+                  </div>
+              
+                  <div id="content-wrapper">
+ 
+					<div id="centertext-libraries">
+                    	<h1>Libraries</h1>
+                  	</div>
+                  
+                    <div id="leftbox-libraries">
+                     	<h2>C library</h2>
+         	 			<p>This repository contains the source code for the Eclipse Paho MQTT C client library.
+							This code builds libraries which enable applications to connect to a MQTT broker to publish messages, and to subscribe to topics and receive published messages.
+							Both synchronous and asynchronous modes of operation are supported.<br><br><b>Click on Logo to download library</b></p>
+          			</div>
+          			<div id="rightbox-libraries">
+         				<a href="http://git.eclipse.org/c/paho/org.eclipse.paho.mqtt.c.git/" target="_blank"> <img src="images/c-Language-logo.jpg" width="175" height="175"></a>
+           			</div>
+           			<div id="leftbox1-libraries">
+          				<h2>Java library</h2>
+                        <p>This repository contains the source code for the Eclipse Paho MQTT Java client library. This will allow your java applications to connect to a MQTT broker and implement the publish/subscribe model. Check out the complete API documentation of the Java client library <a href="http://www.eclipse.org/paho/files/javadoc/index.html" target="_blank">here</a>. <br><br><b>Click on Logo to download library</b></p>
+                    </div>
+           
+           			<div id="rightbox1-libraries">
+                     	<a href="http://git.eclipse.org/c/paho/org.eclipse.paho.mqtt.java.git/" target="_blank"><img src="images/java.png" width="175" height="175"></a>
+                    </div>
+           			<div id="leftbox2-libraries">
+                     	<h2>Arduino library</h2>
+                        <p>Connect your Arduino to the world, Log sensor data, control its actions and build connected experiences around the Arduino platform. This library provides a client for doing simple publish/subscribe messaging with a server that supports MQTT.
+						<br><br><b>Click on Logo to download library</b></p>
+                    </div>
+                        
+                  	<div id="rightbox2-libraries">
+                     	 <a href="https://github.com/knolleary/pubsubclient.git" target="_blank"><img src="images/720px-Arduino_Logo.svg.png" width="175" height="175"></a>
+                    </div>
+                     
+                  	<div id="leftbox3-libraries">
+                     	<h2>Ruby library</h2>
+                        <p>Pure Ruby gem that implements the MQTT (Message Queue Telemetry Transport) protocol, a lightweight protocol for publish/subscribe messaging. Only QOS 0 currently supported<br><br><b>Click on Logo to download library</b></p>
+                  	</div>                        
+                    <div id="rightbox3-libraries">
+                     	<a href="https://github.com/njh/ruby-mqtt.git" target="_blank"><img src="images/ruby.jpg" width="175" height="175"></a>
+                    </div>
+
+                    <div id="leftbox4-libraries">
+          				<h2>iOS library</h2>
+                        <p>Build your own library for iOS devices for communicating with MQTT devices. A great tutorial from IBM lets you build a MQTT C client for your iPhone, iPad or iPod. Connect you iDevice to the cloud now!!<br><br><b>Click on Logo to download library</b></p>
+                    </div>
+           			<div id="rightbox4-libraries">
+                      <a href="http://pic.dhe.ibm.com/infocenter/wmqv7/v7r5/index.jsp?topic=%2Fcom.ibm.mm.tc.doc%2Ftc10120_.htm" target="_blank"><img src="images/ios.jpg" width="175" height="175"></a>
+                    </div>
+                    <div id="leftbox5-libraries">
+          				<h2>Android library</h2>
+                        <p>Connect your android device over MQTT using the MyMQTT app on Google Play Store. MQTT on Android opens up infinite possibilities.<br><br><b>Click on Logo to download library</b></p>
+                    </div>
+           			<div id="rightbox5-libraries">
+                      <a href="https://play.google.com/store/apps/details?id=at.tripwire.mqtt.client&hl=en" target="_blank"><img src="images/android.jpg" width="175" height="175"></a>
+                    </div>
+                    <div id="leftbox6-libraries">
+          				<h2>mbed library</h2>
+                        <p>This is a simple MQTT client developed to run on mbed. The library is still under developing, and has features such as connect to MQTT server via TCP connection, publish message to MQTT server and maintain a stable connection with the server.<br><br><b>Click on Logo to download library</b></p>
+                    </div>
+           			<div id="rightbox6-libraries">
+                      <a href="http://ceit.uq.edu.au/content/mqttclient-mbed-version-20" target="_blank"><img src="images/mbed.jpg" width="175" height="175"></a>
+                    </div>
+                </div>
+              
+                  <div id="footer">
+                      <p style="color:grey; text-align:center; margin-top:20px;">&copy;Copyright 2013 | All Rights Reserved | About Us | <a href="support.html">Contact</a> | Privacy | Terms Of Use | <a href="support.html">Feedback</a></p>
+                  </div>
+              </div>
+              <script>
+			 	$(document).ready(function() {
+					$('#loginform').validate({
+						rules: {
+							loginemail: {
+								required: true
+								},
+							logindomainid: {
+								required: true
+								}
+						},
+						messages: {
+							loginemail: {
+								required: "Please enter your Email address"
+								},
+							logindomainid: {
+								required: "Please enter your Domain ID"
+								}
+						}
+					});
+				});
+			</script>
+          </body>
+      
+      </html>

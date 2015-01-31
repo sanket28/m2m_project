@@ -1,0 +1,126 @@
+<!doctype html>
+      
+      <html>
+      
+          <head>
+          	<script src="js/jquery.js" type="text/javascript"></script>
+            <script src="js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+            <script src="js/jquery.validate.js" type="text/javascript"></script>
+            <script src="js/jquery.reveal.js"></script>
+          	<meta charset="UTF-8">
+            <title>Platform-M2M Dashboard</title>
+            <link rel="stylesheet" type="text/css" href="css/styles.css" media="screen">
+            <link rel="stylesheet" href="css/reveal.css" type="text/css" media="screen">
+            <link href='http://fonts.googleapis.com/css?family=Lato:900,400,700' rel='stylesheet' type='text/css'>
+          </head>
+          
+          <body>
+              <div id="wrapper">
+                  <div id="nav">
+                       <div id="mainnav">
+                            <ul>
+                              <li><a href="index.html"><img src="images/m2mlogo.png" style="vertical-align:middle; height:54px;"></a></li>
+                              <li style="vertical-align:middle; height:54px;"><a href="platform.html">PLATFORM</a></li>
+                              <li style="vertical-align:middle; height:54px;"><a href="services.html">SERVICES</a></li>
+                              <li style="vertical-align:middle; height:54px;"><a href="devcenter.html">DEVELOPER CENTER</a></li>
+                              <li style="vertical-align:middle; height:54px;"><a href="support.html">SUPPORT</a></li>
+                              <li style="vertical-align:middle; height:54px;"><a data-reveal-id="loginModal" id="login" href="#" style="background-image: radial-gradient(at 50% 50%, rgb(14, 119, 95) 0%, rgb(26, 176, 142) 100%)">LOGIN</a>
+                              	<div id="loginModal" class="reveal-modal">
+                                	<h2 style="margin:6px auto; width:250px"><strong>Login:</strong></h2>
+                                	<form method="post" action="login.php" name="loginform" id="loginform">
+                                    	 <ol>
+                                            <li>
+                                                <label for="loginemail">Email</label>
+                                                <input type="email" name="loginemail">
+                                            </li>
+                                            <li>
+                                                <label for="logindomainid">Domain ID</label>
+                                                <input type="password" name="logindomainid">
+                                            </li>
+                                            <li>
+                                            	<input class="submit" type="image" value="" src="images/login.png" style="height:50px; width:110px; margin-left:-4px">
+                                    		</li>
+                                         </ol>
+                                    </form>
+                              		<a class="close-reveal-modal">&#215;</a>
+                         		</div>
+                          </ul>
+                      </div>
+                  </div>
+              
+              	<div id="content-wrapper">
+                   <div id="centertext-platform">
+                      <h1>A powerful platform for a powerful network</h1>
+                      <p><b>Build and deploy your connected device in seconds!!</b></p>
+                  </div>
+                  <div id="centerimage-platform">
+                      <img src="images/platformbanner.png" style="display:block; margin-left:auto; margin-right:auto;">
+                  </div>
+                  <div id="leftbox1-platform">
+                      <h2>Hive MQ</h2>
+                        <p>HiveMQ is a MQTT broker, specifically for enterprises which find themselves in the emerging age of Machine-to-Machine communications (M2M) and the Internet of Things. It was built from the ground up with maximum scalability, easy management and security in mind. We provide our customers the ability to connect to HiveMQ with a completely secure environment.</p>
+                        
+                  </div>
+                
+                      <div id="rightbox1-platform">
+                      <img src="images/hmq.png">
+                     </div>
+
+                     <div id="rightbox1-platform">
+                      <h2>Cloud Foundry</h2>
+                        <p>The M2M Dashboard is built on top of Cloud Foundry which is an open source cloud computing platform as a service (PaaS). It supports applications in Java, Ruby, Javascript, Spring and many more. Cloud Foundry provides built-in services which can be bound to the application such as Redis, RabbitMQ, MySQL, PostgreSQL, MongoDB and many more.</p>
+              
+                  </div>
+                
+                      <div id="leftbox1-platform">
+                      <img src="images/cf.jpg">
+                     </div>
+
+                     <div id="leftbox1-platform">
+                      <h2>ClearDB MySQL</h2>
+                        <p>We keep you credentials safe. ClearDB is a higly available MySQL service for all applications. ClearDB provides a secured database because all the data can be encrypted. It allows the database to scale indefinitely with any number of replicas that are needed. </p>
+              
+                  </div>
+                
+                      <div id="rightbox1-platform">
+                      <img src="images/clrdb.jpg">
+                     </div>
+                  <div id="centertext2-platform">
+                      <h2>Become a part of the Internet of Things revolution now!!</h2>
+                        
+                  </div>
+                       <div id="centerimage2-platform">
+                   <a href="getstarted.html"><img src="images/getstarted.png"></a>
+                     </div>
+    
+              	</div>
+              
+              	<div id="footer">
+                	<p style="color:grey; text-align:center; margin-top:20px;">&copy;Copyright 2013 | All Rights Reserved | About Us | <a href="support.html">Contact</a> | Privacy | Terms Of Use | <a href="support.html">Feedback</a></p>
+              	</div>
+              </div>
+              <script>
+			 	$(document).ready(function() {
+					$('#loginform').validate({
+						rules: {
+							loginemail: {
+								required: true
+								},
+							logindomainid: {
+								required: true
+								}
+						},
+						messages: {
+							loginemail: {
+								required: "Please enter your Email address"
+								},
+							logindomainid: {
+								required: "Please enter your Domain ID"
+								}
+						}
+					});
+				});
+			</script>
+          </body>
+      
+      </html>
